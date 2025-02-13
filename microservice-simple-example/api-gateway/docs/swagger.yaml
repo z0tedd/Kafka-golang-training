@@ -1,0 +1,37 @@
+basePath: /
+host: localhost:3005
+info:
+  contact: {}
+  description: A simple service that sends a "Ping" message to Kafka and waits for
+    a "Pong" response.
+  title: Ping Service API
+  version: "1.0"
+paths:
+  /ping:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint sends a "Ping" message to a Kafka topic and waits
+        for a corresponding "Pong" response.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with the 'Pong' message.
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error (e.g., Kafka communication failure or
+            timeout).
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Sends a "Ping" message and waits for a "Pong" response.
+      tags:
+      - ping
+schemes:
+- http
+swagger: "2.0"

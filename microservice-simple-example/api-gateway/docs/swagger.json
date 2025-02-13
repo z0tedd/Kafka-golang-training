@@ -1,0 +1,51 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "A simple service that sends a \"Ping\" message to Kafka and waits for a \"Pong\" response.",
+        "title": "Ping Service API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:3005",
+    "basePath": "/",
+    "paths": {
+        "/ping": {
+            "get": {
+                "description": "This endpoint sends a \"Ping\" message to a Kafka topic and waits for a corresponding \"Pong\" response.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ping"
+                ],
+                "summary": "Sends a \"Ping\" message and waits for a \"Pong\" response.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response with the 'Pong' message.",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error (e.g., Kafka communication failure or timeout).",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
